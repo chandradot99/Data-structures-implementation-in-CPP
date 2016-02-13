@@ -52,12 +52,14 @@ class Queue
 		{
 			if(!isEmpty())
 				return queue[Front];
+			return INT_MIN;
 		}
 		
 		int rear()
 		{
 			if(!isEmpty())
 				return queue[Rear];
+			return INT_MIN;
 		}
 };
 
