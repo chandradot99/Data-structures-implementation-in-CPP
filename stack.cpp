@@ -1,16 +1,17 @@
 #include<iostream>
+#include<climits>
 using namespace std;
 
 class Stack
 {
 	public:
-		int top;
+		int Top;
 		int size;
 		int *stack;
 		Stack(int s)
 		{
 			size = s;
-			top = -1;
+			Top = -1;
 			stack = new int(size);	
 		}
 
@@ -18,14 +19,14 @@ class Stack
 
 		bool isFull()
 		{
-			return (top == size-1) ? true : false;
+			return (Top == size-1) ? true : false;
 		}
 
 // function to check whether stack is empty
 
 		bool isEmpty()
 		{
-			return (top == -1) ? true : false;
+			return (Top == -1) ? true : false;
 		}
 
 // function to push into the stack
@@ -36,24 +37,33 @@ class Stack
 				cout<<"Stack is Overflowed\n";
 			else
 			{
-				stack[++top] = data;
+				stack[++Top] = data;
 				cout<<data<<" is pushed into the stack\n";
 			}
 		}
 
 // function to pop from the stack
 
-		int pop()
+		void pop()
 		{
 			int data;
 			if(isEmpty())
 				cout<<"Stack is Underflowed\n";
 			else
 			{
-				data = stack[top--];
+				data = stack[Top--];
 				cout<<data<<" is popped out from the stack\n";
 			}
-			return data;
+		}
+
+// function to return top element of the stack
+
+		int top()
+		{
+			if(!isEmpty())
+				return stack[Top];
+			return INT_MIN; // return min when stack is empty 
+
 		}
 
 };
@@ -70,11 +80,17 @@ int main()
 	s.push(4);
 	s.push(5);
 	s.push(6);
+	cout<<s.top()<<endl;
 	s.pop();
+	cout<<s.top()<<endl;
 	s.pop();
+	cout<<s.top()<<endl;
 	s.pop();
+	cout<<s.top()<<endl;
 	s.pop();
+	cout<<s.top()<<endl;
 	s.pop();
+	cout<<s.top()<<endl;
 	s.pop();
 
 	return 0;
